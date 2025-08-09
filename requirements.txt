@@ -1,0 +1,6 @@
+Python 3.9+
+
+pandas, numpy, scikit-learn
+
+lightgbm, ruptures, scipy
+
