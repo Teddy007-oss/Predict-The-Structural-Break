@@ -1,8 +1,13 @@
-import os
 import pandas as pd
 import joblib
 from sklearn.metrics import roc_auc_score
 import crunch
+
+import sys
+import os
+
+# Add the repo root (one level up) to sys.path so "src" is importable
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 # Import your train and infer functions
 from src.train import train
@@ -14,11 +19,11 @@ crunch = crunch.load_notebook()
 # Step 1: Load parquet data
 print("Loading data...")
 
-X_train = pd.read_parquet("data/x_train.parquet")
-y_train = pd.read_parquet("data/y_train.parquet")["structural_breakpoint"]
-
-X_test_df = pd.read_parquet("data/x_test_reduced.parquet")
-y_test = pd.read_parquet("data/y_test_reduced.parquet")["structural_breakpoint"]
+#read the paquet files
+y_train = pd.read_parquet(r"C:\Users\USER\Documents\ADIA LAB STRUCTURAL BREAK HACKATHON\data\raw\y_train.parquet", engine='pyarrow')["structural_breakpoint"]
+X_train = pd.read_parquet(r"C:\Users\USER\Documents\ADIA LAB STRUCTURAL BREAK HACKATHON\data\raw\X_train.parquet", engine='pyarrow')
+y_test = pd.read_parquet(r"C:\Users\USER\Documents\ADIA LAB STRUCTURAL BREAK HACKATHON\data\raw\y_test.reduced.parquet", engine='pyarrow')["structural_breakpoint"]
+X_test_df = pd.read_parquet(r"C:\Users\USER\Documents\ADIA LAB STRUCTURAL BREAK HACKATHON\data\raw\X_test.reduced.parquet", engine='pyarrow')
 
 # IMPORTANT: X_test must be a list of DataFrames (one per id)
 X_test = [df for _, df in X_test_df.groupby("id")]
