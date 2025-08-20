@@ -1,6 +1,8 @@
 import typing
 import joblib
 import scipy.stats
+import pandas as pd
+import os
 
 def infer(X_test: typing.Union[pd.DataFrame, typing.Iterable[pd.DataFrame]],
           model_directory_path: str):
@@ -36,5 +38,6 @@ def infer(X_test: typing.Union[pd.DataFrame, typing.Iterable[pd.DataFrame]],
 
         # Convert p-value into prediction score
         prediction = 1 - p_value
+        print(f"[infer] id={i}, p-value={p:.4f}, prediction={prediction:.4f}")
 
         yield prediction
