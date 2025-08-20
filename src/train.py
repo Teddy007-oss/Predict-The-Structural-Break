@@ -22,4 +22,3 @@ def train(X_train: pd.DataFrame, y_train: pd.Series, model_directory_path: str, 
     model = {"method": method}
     
     joblib.dump(model, os.path.join(model_directory_path, "model.joblib"))
-#hello
