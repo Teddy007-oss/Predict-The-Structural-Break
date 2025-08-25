@@ -34,5 +34,4 @@ var/
 *.log
 
 # Ignore data (optional if datasets are too large to commit)
-data/raw/
-data/processed/
+data/
