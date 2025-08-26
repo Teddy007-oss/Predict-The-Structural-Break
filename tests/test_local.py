@@ -10,8 +10,8 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 # Import your train and infer functions
-from src.train import train
-from src.infer import infer
+#from src.train import train
+#from src.infer import infer
 
 # Load the Crunch Toolings
 crunch = crunch.load_notebook()
@@ -20,10 +20,10 @@ crunch = crunch.load_notebook()
 print("Loading data...")
 
 #read the paquet files
-y_train = pd.read_parquet(r"C:\Users\USER\Documents\ADIA LAB STRUCTURAL BREAK HACKATHON\data\raw\y_train.parquet", engine='pyarrow')["structural_breakpoint"]
-X_train = pd.read_parquet(r"C:\Users\USER\Documents\ADIA LAB STRUCTURAL BREAK HACKATHON\data\raw\X_train.parquet", engine='pyarrow')
-y_test = pd.read_parquet(r"C:\Users\USER\Documents\ADIA LAB STRUCTURAL BREAK HACKATHON\data\raw\y_test.reduced.parquet", engine='pyarrow')["structural_breakpoint"]
-X_test_df = pd.read_parquet(r"C:\Users\USER\Documents\ADIA LAB STRUCTURAL BREAK HACKATHON\data\raw\X_test.reduced.parquet", engine='pyarrow')
+y_train = pd.read_parquet(r"C:\Users\USER\Documents\ADIA LAB STRUCTURAL BREAK HACKATHON\data\y_train.parquet", engine='pyarrow')["structural_breakpoint"]
+X_train = pd.read_parquet(r"C:\Users\USER\Documents\ADIA LAB STRUCTURAL BREAK HACKATHON\data\X_train.parquet", engine='pyarrow')
+y_test = pd.read_parquet(r"C:\Users\USER\Documents\ADIA LAB STRUCTURAL BREAK HACKATHON\data\y_test.reduced.parquet", engine='pyarrow')["structural_breakpoint"]
+X_test_df = pd.read_parquet(r"C:\Users\USER\Documents\ADIA LAB STRUCTURAL BREAK HACKATHON\data\X_test.reduced.parquet", engine='pyarrow')
 
 # IMPORTANT: X_test must be a list of DataFrames (one per id)
 X_test = [df for _, df in X_test_df.groupby("id")]
